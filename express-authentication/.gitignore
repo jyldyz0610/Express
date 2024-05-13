@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Lokale Konfigurationsdateien
+.env
+
+# Build-Verzeichnisse
+/build
+/dist
+
+# Log-Dateien
+logs/
+
+# Umgebungs- oder Editor-spezifische Dateien
+*.log
+*.swp
+.DS_Store
