@@ -1,7 +1,13 @@
-// test.js
-
 const request = require('supertest');
 const app = require('./app');
+
+let server;
+
+beforeAll(() => {
+  server = app.listen(5000, () => {
+    console.log('Server läuft auf Port 5000');
+  });
+});
 
 describe('Test Authentifizierungsroutine', () => {
   test('Login mit gültigen Anmeldeinformationen', async () => {
@@ -31,4 +37,8 @@ describe('Test Authentifizierungsroutine', () => {
     expect(res.statusCode).toEqual(200);
     expect(res.text).toEqual('Logout erfolgreich!');
   });
+});
+
+afterAll(() => {
+  server.close();
 });
