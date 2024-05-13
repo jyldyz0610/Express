@@ -20,12 +20,10 @@ jobs:
 
     - name: Install Dependencies
       run: npm install
-      working-directory: express-authentication
 
     - name: Run Tests
       run: npm test
-      working-directory: express-authentication
 
     - name: Start Application
       run: npm start
-      working-directory: express-authentication
+
