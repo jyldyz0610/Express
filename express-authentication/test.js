@@ -3,9 +3,17 @@ const app = require('./app');
 
 let server;
 
-beforeAll(() => {
+beforeAll((done) => {
   server = app.listen(5000, () => {
     console.log('Server läuft auf Port 5000');
+    done();
+  });
+});
+
+afterAll((done) => {
+  server.close(() => {
+    console.log('Server geschlossen');
+    done();
   });
 });
 
@@ -37,8 +45,4 @@ describe('Test Authentifizierungsroutine', () => {
     expect(res.statusCode).toEqual(200);
     expect(res.text).toEqual('Logout erfolgreich!');
   });
-});
-
-afterAll(() => {
-  server.close();
 });
